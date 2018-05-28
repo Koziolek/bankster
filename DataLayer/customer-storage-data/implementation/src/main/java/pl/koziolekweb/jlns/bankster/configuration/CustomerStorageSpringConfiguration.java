@@ -6,6 +6,7 @@ import com.jlupin.interfaces.common.enums.PortType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import pl.koziolekweb.jlns.bankster.service.interfaces.StorageCustomerBasicInformationService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +19,10 @@ public class CustomerStorageSpringConfiguration {
 		return JLupinClientUtil.generateInnerMicroserviceLoadBalancerDelegator(PortType.JLRMC);
 	}
 
-	// @Bean(name = "exampleService")
-	// public ExampleService getExampleService() {
-	//     return JLupinClientUtil.generateRemote(getJLupinDelegator(), "example-microservice", ExampleService.class);
-	// }
-
 	@Bean(name = "jLupinRegularExpressionToRemotelyEnabled")
 	public List getRemotelyBeanList() {
 		List<String> list = new ArrayList<>();
-		// list.add("<REMOTE_SERVICE_NAME>");
+		list.add(StorageCustomerBasicInformationService.name);
 		return list;
 	}
 }

@@ -7,7 +7,13 @@ import com.jlupin.interfaces.client.delegator.exception.JLupinDelegatorException
 import com.jlupin.interfaces.common.enums.PortType;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.TestInstance;
 
+import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
+
+@TestInstance(PER_CLASS)
 public abstract class BaseTest {
 	private final JLupinMainServerInZoneConfiguration[] mainServerInZoneConfigurations;
 	private final JLupinDelegator jLupinDelegator;
@@ -23,7 +29,7 @@ public abstract class BaseTest {
 		return jLupinDelegator;
 	}
 
-	@Before
+	@BeforeAll
 	public void before() {
 		try {
 			jLupinDelegator.start();
@@ -32,7 +38,7 @@ public abstract class BaseTest {
 		}
 	}
 
-	@After
+	@AfterAll
 	public void after() {
 		try {
 			jLupinDelegator.stop();

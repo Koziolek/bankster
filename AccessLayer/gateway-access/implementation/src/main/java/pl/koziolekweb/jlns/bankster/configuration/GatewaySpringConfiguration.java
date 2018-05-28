@@ -6,6 +6,7 @@ import com.jlupin.interfaces.common.enums.PortType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import pl.koziolekweb.jlns.bankster.service.interfaces.CustomerBasicInformationService;
 
 @Configuration
 @ComponentScan({
@@ -18,9 +19,11 @@ public class GatewaySpringConfiguration {
 		return JLupinClientUtil.generateInnerMicroserviceLoadBalancerDelegator(PortType.JLRMC);
 	}
 
-	// @Bean(name = "exampleService")
-	// public ExampleService getExampleService() {
-	//     return JLupinClientUtil.generateRemote(getJLupinDelegator(), "example-microservice", ExampleService.class);
-	// }
+	@Bean(name = CustomerBasicInformationService.name)
+	public CustomerBasicInformationService getCustomerBasicInformationService() {
+		return JLupinClientUtil.generateRemote(getJLupinDelegator(),
+				CustomerBasicInformationService.name,
+				CustomerBasicInformationService.class);
+	}
 }
 
