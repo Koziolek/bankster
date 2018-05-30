@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.stereotype.Service;
 import pl.koziolekweb.jlns.bankster.common.util.JLupinService;
+import pl.koziolekweb.jlns.bankster.service.CustomerStorageServiceName;
 import pl.koziolekweb.jlns.bankster.service.interfaces.StorageCustomerBasicInformationService;
 
 import java.util.List;
@@ -27,6 +28,7 @@ public class CustomerSpringConfiguration {
 	@Bean(name = StorageCustomerBasicInformationService.name)
 	public StorageCustomerBasicInformationService getStorageCustomerBasicInformationService() {
 		return JLupinClientUtil.generateRemote(getJLupinDelegator(),
+				CustomerStorageServiceName.NAME,
 				StorageCustomerBasicInformationService.name,
 				StorageCustomerBasicInformationService.class);
 	}

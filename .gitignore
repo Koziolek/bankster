@@ -1,4 +1,4 @@
-*/target/
+target/
 !.mvn/wrapper/maven-wrapper.jar
 /server/
 ### STS ###
@@ -24,3 +24,4 @@
 /nbdist/
 /.nb-gradle/
 /hr-rodo/
+

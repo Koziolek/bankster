@@ -6,6 +6,7 @@ import com.jlupin.interfaces.common.enums.PortType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import pl.koziolekweb.jlns.bankster.service.CustomerServiceName;
 import pl.koziolekweb.jlns.bankster.service.interfaces.CustomerBasicInformationService;
 
 @Configuration
@@ -22,6 +23,7 @@ public class GatewaySpringConfiguration {
 	@Bean(name = CustomerBasicInformationService.name)
 	public CustomerBasicInformationService getCustomerBasicInformationService() {
 		return JLupinClientUtil.generateRemote(getJLupinDelegator(),
+				CustomerServiceName.NAME,
 				CustomerBasicInformationService.name,
 				CustomerBasicInformationService.class);
 	}
