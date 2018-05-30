@@ -8,6 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import pl.koziolekweb.jlns.bankster.service.interfaces.StorageCustomerBasicInformationService;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,16 @@ public class CustomerStorageSpringConfiguration {
 		List<String> list = new ArrayList<>();
 		list.add(StorageCustomerBasicInformationService.name);
 		return list;
+	}
+
+	@Bean(name="storagePath")
+	public Path storagePath(){
+		return Paths.get("./customer-storage").toAbsolutePath();
+	}
+
+	@Bean(name="useRoyalFoodTester")
+	public boolean useRoyalFoodTester(){
+		return false;
 	}
 }
 
